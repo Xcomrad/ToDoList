@@ -21,6 +21,11 @@ class TableViewCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // Update
+    func update(_ item: Model) {
+        nameItemLabel.text = item.name
+    }
 }
 
 
@@ -37,5 +42,4 @@ extension TableViewCell {
             make.leading.trailing.equalTo(contentView).inset(20)
         }
     }
-    
 }

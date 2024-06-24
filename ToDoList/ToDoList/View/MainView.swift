@@ -12,6 +12,7 @@ class MainView: UIView {
         tableView.dataSource = self
         
         tableView.allowsSelection = false
+        tableView.rowHeight = 60
         
         tableView.register(TableViewCell.self, forCellReuseIdentifier: "TableViewCell")
         return tableView

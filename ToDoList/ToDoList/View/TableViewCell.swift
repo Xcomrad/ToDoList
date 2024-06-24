@@ -7,7 +7,7 @@ class TableViewCell: UITableViewCell {
     
     private lazy var nameItemLabel: UILabel = {
        let label = UILabel()
-        label.font = UIFont.boldSystemFont(ofSize: 25)
+        label.font = UIFont.boldSystemFont(ofSize: 18)
         label.textAlignment = .left
         return label
     }()
@@ -24,7 +24,7 @@ class TableViewCell: UITableViewCell {
     
     // Update
     func update(_ item: Model) {
-        nameItemLabel.text = item.name
+        nameItemLabel.text = item.title
     }
 }
 
@@ -43,3 +43,5 @@ extension TableViewCell {
         }
     }
 }
+
+

@@ -3,11 +3,13 @@ import UIKit
 
 class MainView: UIView {
     
-    private lazy var tableView: UITableView = {
+    var toDoItems: [String] = []
+    
+    lazy var tableView: UITableView = {
        let tableView = UITableView()
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView.register(TableViewCell.self, forCellReuseIdentifier: "TableViewCell")
         return tableView
     }()
     
@@ -42,12 +44,14 @@ class MainView: UIView {
 extension MainView: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return toDoItems.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        return UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: TableViewCell.reuseId, for: indexPath) as! TableViewCell
+        cell.textLabel?.text = toDoItems[indexPath.row]
+        tableView.reloadData()
+        return cell
     }
 }

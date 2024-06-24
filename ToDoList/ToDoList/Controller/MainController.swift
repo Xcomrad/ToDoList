@@ -4,8 +4,11 @@ import SnapKit
 
 class MainController: UIViewController {
     
+    var items: [Model] = []
+    
     private let mainView = MainView()
-    private let model = Model()
+    private let dataManager = DataManager()
+    private let itemsManager = ItemsManager()
     
     override func loadView() {
         view = mainView
@@ -14,11 +17,12 @@ class MainController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navBarSettings()
+        setbarButtons()
     }
     
-    func update() {
-        mainView.toDoItems = model.toDoItems
-        mainView.tableView.reloadData()
+    override func viewIsAppearing(_ animated: Bool) {
+        super.viewIsAppearing(animated)
+        items = itemsManager.toDoItems
     }
 }
 
@@ -28,11 +32,14 @@ extension MainController {
     
     func navBarSettings() {
         title = "ToDo Items"
-        
+    }
+    
+    func setbarButtons() {
         let addAction = UIAction { _ in
-            self.model.addItem(nameItem: "New Item")
+            self.items.append(Model(id: UUID(), name: "New Item"))
+            self.mainView.tableView.reloadData()
         }
-        
-        navigationItem.rightBarButtonItem = UIBarButtonItem(systemItem: .add, primaryAction: addAction)
+        let addButton = UIBarButtonItem(systemItem: .add, primaryAction: addAction)
+        navigationItem.rightBarButtonItem = addButton
     }
 }

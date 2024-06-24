@@ -15,6 +15,8 @@
 		2616C8F62C29C61200CF58AA /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 2616C8F52C29C61200CF58AA /* SnapKit */; };
 		2616C8F82C29C98100CF58AA /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2616C8F72C29C98100CF58AA /* TableViewCell.swift */; };
 		2616C8FD2C29CA5300CF58AA /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2616C8FC2C29CA5300CF58AA /* Model.swift */; };
+		2616C9022C29FB9700CF58AA /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2616C9012C29FB9700CF58AA /* DataManager.swift */; };
+		2616C9042C2A028C00CF58AA /* ItemsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2616C9032C2A028C00CF58AA /* ItemsManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +29,8 @@
 		2616C8F22C29C50800CF58AA /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		2616C8F72C29C98100CF58AA /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		2616C8FC2C29CA5300CF58AA /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		2616C9012C29FB9700CF58AA /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		2616C9032C2A028C00CF58AA /* ItemsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +68,7 @@
 				2616C8FB2C29CA4200CF58AA /* Model */,
 				2616C8FA2C29CA3400CF58AA /* View */,
 				2616C8F92C29CA2C00CF58AA /* Controller */,
+				2616C9002C29FB3E00CF58AA /* Workers */,
 				2616C8F12C29C46D00CF58AA /* Resources */,
 			);
 			path = ToDoList;
@@ -110,6 +115,15 @@
 				2616C8FC2C29CA5300CF58AA /* Model.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		2616C9002C29FB3E00CF58AA /* Workers */ = {
+			isa = PBXGroup;
+			children = (
+				2616C9012C29FB9700CF58AA /* DataManager.swift */,
+				2616C9032C2A028C00CF58AA /* ItemsManager.swift */,
+			);
+			path = Workers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -189,6 +203,8 @@
 			files = (
 				2616C8F82C29C98100CF58AA /* TableViewCell.swift in Sources */,
 				2616C8FD2C29CA5300CF58AA /* Model.swift in Sources */,
+				2616C9042C2A028C00CF58AA /* ItemsManager.swift in Sources */,
+				2616C9022C29FB9700CF58AA /* DataManager.swift in Sources */,
 				2616C8E12C29C13D00CF58AA /* MainController.swift in Sources */,
 				2616C8F32C29C50800CF58AA /* MainView.swift in Sources */,
 				2616C8DD2C29C13D00CF58AA /* AppDelegate.swift in Sources */,

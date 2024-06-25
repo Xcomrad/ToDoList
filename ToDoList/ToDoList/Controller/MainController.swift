@@ -32,11 +32,11 @@ extension MainController {
         let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNewTask))
         addButton.tintColor = .white
         
-//        let editButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editTasks))
-//        editButton.tintColor = .white
+        let editButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editTasks))
+        editButton.tintColor = .white
         
         navigationItem.rightBarButtonItem = addButton
-        //navigationItem.leftBarButtonItem = editButton
+        navigationItem.leftBarButtonItem = editButton
     }
     
     @objc func addNewTask() {
@@ -48,7 +48,7 @@ extension MainController {
         let addAction = UIAlertAction(title: "Добавить", style: .default) { _ in
             if let title = alertController.textFields?.first?.text, !title.isEmpty {
                 
-                let newItem = Model(id: UUID(), title: title, isCompleted: false)
+                let newItem = Item(id: UUID(), title: title, isCompleted: false)
                 self.mainView.dataManager.items.append(newItem)
                 self.mainView.tableView.insertRows(at: [IndexPath(row: self.mainView.dataManager.items.count - 1,
                                                                   section: 0)], with: .automatic)
@@ -64,6 +64,10 @@ extension MainController {
         alertController.addAction(addAction)
         alertController.addAction(cancelAction)
         present(alertController, animated: true, completion: nil)
+    }
+    
+    @objc func editTasks() {
+        mainView.tableView.setEditing(!mainView.tableView.isEditing, animated: true)
     }
 }
 

@@ -2,13 +2,13 @@
 import UIKit
 
 protocol TableViewCellDelegate: AnyObject {
-    func didToggleComplete(for item: Model)
+    func didToggleComplete(for item: Item)
 }
 
 class TableViewCell: UITableViewCell {
     
     weak var delegate: TableViewCellDelegate?
-    private var item: Model?
+    private var item: Item?
     
     static let reuseId = "TableViewCell"
     
@@ -43,7 +43,7 @@ class TableViewCell: UITableViewCell {
     }
     
     //MARK: - Update
-    func update(_ item: Model) {
+    func update(_ item: Item) {
         self.item = item
         nameItemLabel.text = item.title
         
@@ -56,8 +56,6 @@ class TableViewCell: UITableViewCell {
         let buttonTitleColor: UIColor = item.isCompleted ? .systemGreen : .systemRed
         completeButton.setTitleColor(buttonTitleColor, for: .normal)
         
-        let backGroundCollor: UIColor = item.isCompleted ? .systemGray6 : .white
-        contentView.backgroundColor = backGroundCollor
     }
 }
 

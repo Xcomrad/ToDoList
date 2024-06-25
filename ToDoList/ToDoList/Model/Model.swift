@@ -1,7 +1,7 @@
 
 import Foundation
 
-struct Item: Codable {
+struct Model: Codable {
     let id: UUID
     let title: String
     var isCompleted: Bool

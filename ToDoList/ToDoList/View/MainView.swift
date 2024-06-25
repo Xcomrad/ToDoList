@@ -59,18 +59,12 @@ extension MainView: UITableViewDelegate, UITableViewDataSource {
         
         return UISwipeActionsConfiguration(actions: [deleteAction])
     }
-    
-    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        dataManager.moveItem(fromIndex: sourceIndexPath.row, toIndex: destinationIndexPath.row)
-        tableView.reloadData()
-        dataManager.saveItem()
-    }
 }
 
 
 
 extension MainView: TableViewCellDelegate {
-    func didToggleComplete(for item: Item) {
+    func didToggleComplete(for item: Model) {
         if let index = dataManager.items.firstIndex(where: { $0.id == item.id }) {
             dataManager.items[index].isCompleted.toggle()
             tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .automatic)

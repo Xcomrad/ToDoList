@@ -1,32 +1,38 @@
 
 import Foundation
 
-class DataManager {
+protocol DataManager {
+    func saveItem()
+    func getItem() -> [Model]
+}
+
+class DataManagerImpl: DataManager {
     
-    private var userDefaults = UserDefaults(suiteName: "items")
-    private let itemsKey: String = "saved_items"
-    
-    func saveItems(_ items: [Model]) {
-    
+    private let encoder = JSONEncoder()
+    private let decoder = JSONDecoder()
+
+    private let key = "Items"
+    var items: [Model] = []
+
+    //MARK: - Public
+    func saveItem() {
+
         do {
-            let decoder = JSONEncoder()
-            let itemsData = try decoder.encode(items)
-            userDefaults?.setValue(itemsData, forKey: itemsKey)
+            let data = try encoder.encode(items)
+            UserDefaults.standard.set(data, forKey: key)
         } catch {
-            print("\(error)")
+            print(error)
         }
     }
-    
-    func getItems() -> [Model] {
-        
-        guard let itemsData = userDefaults?.data(forKey: itemsKey) else { return [] }
-        
+   
+    func getItem() -> [Model] {
+
+        guard let data = UserDefaults.standard.data(forKey: key) else { return [] }
         do {
-            let decoder = JSONDecoder()
-            let items = try decoder.decode([Model].self, from: itemsData)
-            return items
+            let array = try decoder.decode(Array<Model>.self, from: data)
+            return array
         } catch {
-            print("\(error)")
+            print(error)
         }
         return []
     }

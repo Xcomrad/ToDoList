@@ -11,7 +11,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
-
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
   
         guard let windowScene = (scene as? UIWindowScene) else { return }
@@ -19,6 +18,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let controller = MainController()
         let navController = UINavigationController(rootViewController: controller)
+        
+        // NavBar
+        let appearance = UINavigationBarAppearance()
+        appearance.backgroundColor = UIColor.systemIndigo
+        appearance.titleTextAttributes = [.foregroundColor: UIColor.white, .font: UIFont.boldSystemFont(ofSize: 20)]
+        appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white, .font: UIFont.boldSystemFont(ofSize: 34)]
+        
+        navController.navigationBar.standardAppearance = appearance
+        navController.navigationBar.scrollEdgeAppearance = appearance
+        navController.navigationBar.tintColor = .white
+        
         window?.rootViewController = navController
         window?.makeKeyAndVisible()
     }

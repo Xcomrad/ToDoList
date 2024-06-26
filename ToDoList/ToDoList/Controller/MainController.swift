@@ -32,11 +32,11 @@ extension MainController {
         let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNewTask))
         addButton.tintColor = .white
         
-//        let editButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editTasks))
-//        editButton.tintColor = .white
+        let editButton = UIBarButtonItem(barButtonSystemItem: .edit, target: self, action: #selector(editTask))
+        editButton.tintColor = .white
         
         navigationItem.rightBarButtonItem = addButton
-        //navigationItem.leftBarButtonItem = editButton
+        navigationItem.leftBarButtonItem = editButton
     }
     
     @objc func addNewTask() {
@@ -64,6 +64,10 @@ extension MainController {
         alertController.addAction(addAction)
         alertController.addAction(cancelAction)
         present(alertController, animated: true, completion: nil)
+    }
+    
+    @objc func editTask() {
+        mainView.tableView.setEditing(!mainView.tableView.isEditing, animated: true)
     }
 }
 

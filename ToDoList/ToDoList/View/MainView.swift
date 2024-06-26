@@ -59,6 +59,14 @@ extension MainView: UITableViewDelegate, UITableViewDataSource {
         
         return UISwipeActionsConfiguration(actions: [deleteAction])
     }
+    
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        let item = dataManager.items[sourceIndexPath.row]
+        dataManager.items.remove(at: sourceIndexPath.row)
+        dataManager.items.insert(item, at: destinationIndexPath.row)
+        dataManager.saveItem()
+        tableView.reloadData()
+    }
 }
 
 
